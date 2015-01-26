@@ -1,0 +1,23 @@
+{
+  "name": "turf-point-on-line",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morganherlocker/turf-point-on-line.git"
+  },
+  "author": "morganherlocker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/morganherlocker/turf-point-on-line/issues"
+  },
+  "homepage": "https://github.com/morganherlocker/turf-point-on-line",
+  "devDependencies": {
+    "benchmark": "^1.0.0",
+    "tape": "^3.4.0"
+  }
+}
