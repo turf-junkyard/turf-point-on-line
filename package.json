@@ -8,16 +8,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/morganherlocker/turf-point-on-line.git"
+    "url": "https://github.com/Turfjs/turf-point-on-line.git"
   },
   "author": "morganherlocker",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/morganherlocker/turf-point-on-line/issues"
+    "url": "https://github.com/Turfjs/turf-point-on-line/issues"
   },
-  "homepage": "https://github.com/morganherlocker/turf-point-on-line",
+  "homepage": "https://github.com/Turfjs/turf-point-on-line",
   "devDependencies": {
     "benchmark": "^1.0.0",
-    "tape": "^3.4.0"
+    "tape": "^3.4.0",
+    "turf-featurecollection": "^1.0.0"
+  },
+  "dependencies": {
+    "turf-bearing": "^1.0.0",
+    "turf-destination": "^1.2.0",
+    "turf-distance": "^1.0.0",
+    "turf-linestring": "^1.0.1",
+    "turf-point": "^2.0.0"
   }
 }
