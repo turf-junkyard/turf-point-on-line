@@ -13,36 +13,39 @@ var destination = require('turf-destination');
  * @param {Point} Point to snap from
  * @return {Point} Closest Point on the Line
  * @example
- * var line = turf.linestring([
- *       [
- *         -77.0316696166992,
- *         38.878605901789236
- *       ],
- *       [
- *         -77.02960968017578,
- *         38.88194668656296
- *       ],
- *       [
- *         -77.02033996582031,
- *         38.88408470638821
- *       ],
- *       [
- *         -77.02566146850586,
- *         38.885821800123196
- *       ],
- *       [
- *         -77.02188491821289,
- *         38.88956308852534
- *       ],
- *       [
- *         -77.01982498168944,
- *         38.89236892551996
- *       ]
- *     ]);
- * var pt = turf.point([-77.02544689178467,38.88689075977245]);
+ * var line = {
+ *   "type": "Feature",
+ *   "properties": {},
+ *   "geometry": {
+ *     "type": "LineString",
+ *     "coordinates": [
+ *       [-77.031669, 38.878605],
+ *       [-77.029609, 38.881946],
+ *       [-77.020339, 38.884084],
+ *       [-77.025661, 38.885821],
+ *       [-77.021884, 38.889563],
+ *       [-77.019824, 38.892368]
+ *     ]
+ *   }
+ * };
+ * var pt = {
+ *   "type": "Feature",
+ *   "properties": {},
+ *   "geometry": {
+ *     "type": "Point",
+ *     "coordinates": [-77.037076, 38.884017]
+ *   }
+ * };
  * 
  * var snapped = turf.pointOnLine(line, pt);
- * //=snapped
+ * snapped.properties['marker-color'] = '#00f'
+ *
+ * var result = {
+ *   "type": "FeatureCollection",
+ *   "features": [line, pt, snapped]
+ * };
+ *
+ * //=result
  */
 
 module.exports = function (line, pt) {  
