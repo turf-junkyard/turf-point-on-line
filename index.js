@@ -8,7 +8,7 @@ var destination = require('turf-destination');
  * Takes a Point and a LineString and calculates the closest Point on the LineString
  *
  * @module turf/point-on-line
- *
+ * @category misc
  * @param {LineString} Line to snap to
  * @param {Point} Point to snap from
  * @return {Point} Closest Point on the Line
@@ -48,14 +48,14 @@ var destination = require('turf-destination');
  * //=result
  */
 
-module.exports = function (line, pt) {  
+module.exports = function (line, pt) {
   var coords;
   if(line.type === 'Feature') coords = line.geometry.coordinates;
   else if(line.type === 'LineString') coords = line.geometry.coordinates;
   else throw new Error('input must be a LineString Feature or Geometry');
 
   return pointOnLine(pt, coords);
-}
+};
 
 function pointOnLine (pt, coords) {
   var units = 'miles'
@@ -99,7 +99,7 @@ function pointOnLine (pt, coords) {
       var intersectPt = point(intersect);
       intersectPt.properties.dist = distance(pt, intersectPt, units);
     }
-    
+
     if(start.properties.dist < closestPt.properties.dist) {
       closestPt = start;
       closestPt.properties.index = i;
@@ -113,7 +113,7 @@ function pointOnLine (pt, coords) {
       closestPt.properties.index = i;
     }
   }
-  
+
   return closestPt;
 }
 
@@ -127,8 +127,8 @@ function lineIntersects(line1StartX, line1StartY, line1EndX, line1EndY, line2Sta
     onLine2: false
   };
   denominator = ((line2EndY - line2StartY) * (line1EndX - line1StartX)) - ((line2EndX - line2StartX) * (line1EndY - line1StartY));
-  if (denominator == 0) {
-    if(result.x != null && result.y != null) {
+  if (denominator === 0) {
+    if(result.x !== null && result.y !== null) {
       return result;
     } else {
       return false;
