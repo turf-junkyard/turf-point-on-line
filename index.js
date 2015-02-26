@@ -5,7 +5,7 @@ var bearing = require('turf-bearing');
 var destination = require('turf-destination');
 
 /**
- * Takes a Point and a LineString and calculates the closest Point on the LineString
+ * Takes a {@link Point} and a {@link LineString} and calculates the closest Point on the LineString.
  *
  * @module turf/point-on-line
  * @category misc
