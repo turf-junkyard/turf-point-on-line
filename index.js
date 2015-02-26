@@ -9,9 +9,9 @@ var destination = require('turf-destination');
  *
  * @module turf/point-on-line
  * @category misc
- * @param {LineString} Line to snap to
- * @param {Point} Point to snap from
- * @return {Point} Closest Point on the Line
+ * @param {Feature<LineString>} line line to snap to
+ * @param {Feature<Point>} point point to snap from
+ * @return {Feature<Point>} closest point on the `line` to `point`
  * @example
  * var line = {
  *   "type": "Feature",
