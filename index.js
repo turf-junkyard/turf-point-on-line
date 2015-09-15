@@ -75,31 +75,18 @@ function pointOnLine(pt, coords) {
     stop.properties.dist = distance(pt, stop, units);
     //perpendicular
     var direction = bearing(start, stop);
-    var perpendicularPt = destination(pt, 1000, direction + 90, units); // 1000 = gross
+    var perpendicularPt1 = destination(pt, 1000 , direction + 90, units); // 1000 = gross
+    var perpendicularPt2 = destination(pt, 1000 , direction - 90, units); // 1000 = gross
     var intersect = lineIntersects(
-      pt.geometry.coordinates[0],
-      pt.geometry.coordinates[1],
-      perpendicularPt.geometry.coordinates[0],
-      perpendicularPt.geometry.coordinates[1],
+      perpendicularPt1.geometry.coordinates[0],
+      perpendicularPt1.geometry.coordinates[1],
+      perpendicularPt2.geometry.coordinates[0],
+      perpendicularPt2.geometry.coordinates[1],
       start.geometry.coordinates[0],
       start.geometry.coordinates[1],
       stop.geometry.coordinates[0],
       stop.geometry.coordinates[1]
-    );
-    if (!intersect) {
-      perpendicularPt = destination(pt, 1000, direction - 90, units); // 1000 = gross
-      intersect = lineIntersects(
-        pt.geometry.coordinates[0],
-        pt.geometry.coordinates[1],
-        perpendicularPt.geometry.coordinates[0],
-        perpendicularPt.geometry.coordinates[1],
-        start.geometry.coordinates[0],
-        start.geometry.coordinates[1],
-        stop.geometry.coordinates[0],
-        stop.geometry.coordinates[1]
       );
-    }
-    perpendicularPt.properties.dist = Infinity;
     var intersectPt;
     if (intersect) {
       var intersectPt = point(intersect);
