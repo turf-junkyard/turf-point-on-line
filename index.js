@@ -48,7 +48,7 @@ var destination = require('turf-destination');
  * //=result
  */
 
-module.exports = function (line, pt) {  
+module.exports = function(line, pt) {
   var coords;
   if (line.type === 'Feature') {
     coords = line.geometry.coordinates;
@@ -61,12 +61,12 @@ module.exports = function (line, pt) {
   return pointOnLine(pt, coords);
 };
 
-function pointOnLine (pt, coords) {
+function pointOnLine(pt, coords) {
   var units = 'miles';
   var closestPt = point([Infinity, Infinity], {
     dist: Infinity
   });
-  for(var i = 0; i < coords.length - 1; i++) {
+  for (var i = 0; i < coords.length - 1; i++) {
     var start = point(coords[i]);
     var stop = point(coords[i + 1]);
     //start
@@ -88,25 +88,25 @@ function pointOnLine (pt, coords) {
       stop.geometry.coordinates[1]
       );
     var intersectPt;
-    if(intersect) {
+    if (intersect) {
       var intersectPt = point(intersect);
       intersectPt.properties.dist = distance(pt, intersectPt, units);
     }
-    
-    if(start.properties.dist < closestPt.properties.dist) {
+
+    if (start.properties.dist < closestPt.properties.dist) {
       closestPt = start;
       closestPt.properties.index = i;
     }
-    if(stop.properties.dist < closestPt.properties.dist) {
-     closestPt = stop;
-     closestPt.properties.index = i;
+    if (stop.properties.dist < closestPt.properties.dist) {
+      closestPt = stop;
+      closestPt.properties.index = i;
     }
-    if(intersectPt && intersectPt.properties.dist < closestPt.properties.dist){ 
+    if (intersectPt && intersectPt.properties.dist < closestPt.properties.dist) {
       closestPt = intersectPt;
       closestPt.properties.index = i;
     }
   }
-  
+
   return closestPt;
 }
 
@@ -115,11 +115,11 @@ function lineIntersects(line1StartX, line1StartY, line1EndX, line1EndY, line2Sta
   // if the lines intersect, the result contains the x and y of the intersection (treating the lines as infinite) and booleans for whether line segment 1 or line segment 2 contain the point
   var denominator, a, b, numerator1, numerator2,
     result = {
-    x: null,
-    y: null,
-    onLine1: false,
-    onLine2: false
-  };
+      x: null,
+      y: null,
+      onLine1: false,
+      onLine2: false
+    };
   denominator = ((line2EndY - line2StartY) * (line1EndX - line1StartX)) - ((line2EndX - line2StartX) * (line1EndY - line1StartY));
   if (denominator === 0) {
     if (result.x !== null && result.y !== null) {
@@ -148,7 +148,7 @@ function lineIntersects(line1StartX, line1StartY, line1EndX, line1EndY, line2Sta
     result.onLine2 = true;
   }
   // if line1 and line2 are segments, they intersect if both of the above are true
-  if(result.onLine1 && result.onLine2){
+  if (result.onLine1 && result.onLine2) {
     return [result.x, result.y];
   } else {
     return false;
