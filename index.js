@@ -74,7 +74,7 @@ function pointOnLine(pt, coords) {
     //stop
     stop.properties.dist = distance(pt, stop, units);
     //perpendicular
-    var heightDistance = 2 * Math.max(start.properties.dist, stop.properties.dist);
+    var heightDistance = Math.max(start.properties.dist, stop.properties.dist);
     var direction = bearing(start, stop);
     var perpendicularPt1 = destination(pt, heightDistance, direction + 90, units);
     var perpendicularPt2 = destination(pt, heightDistance, direction - 90, units);
